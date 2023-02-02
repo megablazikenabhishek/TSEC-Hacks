@@ -9,6 +9,8 @@ let Items = require(path.join(__dirname, '../models/index.js')).items;
 let Categories = require(path.join(__dirname, '../models/index.js')).categories;
 let Bids = require(path.join(__dirname, '../models/index.js')).bids;
 
+const Item = require("../models/item");
+
 let ctn = 1;
 
 router.get('/profile', checkAuthenticated, (req, res)=>{
@@ -47,20 +49,22 @@ router.post('/profile/additem', checkAuthenticated, (req, res)=>{
             const form = formidable({ multiples: true });
             form.parse(req, (err, fields, files) => {
                 let imagesToString ='', newImageNames;
+
                 if(files.images[0]){
                     for(let i=0; i< files.images.length; i++){
                         files.images[i].name = `img-${ctn}.${files.images[i].name.substring(files.images[i].name.lastIndexOf(".")+1)}`;
                         ctn++;
                         imagesToString+= `${files.images[i].name},`;
                     }
-                     newImageNames = imagesToString.substring(0, imagesToString.length-1);
-                     for(let i=0; i< files.images.length; i++){
+                    newImageNames = imagesToString.substring(0, imagesToString.length-1);
+                    for(let i=0; i< files.images.length; i++){
                         mv(files.images[i].path, path.join(__dirname, '../', '/*', '../public/uploads') + '/' + files.images[i].name, function (err) {
                             if(err) throw err;
                         });
                     }
                 }
                 else {
+                    files.images.name = `img-${ctn}.${files.images.name.substring(files.images.name.lastIndexOf(".")+1)}`;
                     newImageNames = files.images.name;
                     mv(files.images.path, path.join(__dirname, '../', '/*', '../public/uploads') + '/' + files.images.name, function (err) {
                         if(err) throw err;
@@ -68,16 +72,19 @@ router.post('/profile/additem', checkAuthenticated, (req, res)=>{
                 }
                 
                 (async ()=>{
-                    if(fields.start_bid_date == '1m'){
-                        fields.start_bid_date = new Date().getTime() + 60000;
+                    // await Items.create({user_id: loggedInUser._id, name: fields.name, detail: fields.detail, price: fields.price, images: newImageNames, category_id: fields.category, start_bid_date: fields.start_bid_date});
+                    let userObj = {
+                        user_id : loggedInUser._id,
+                        product_name: fields.name, 
+                        details: fields.details,
+                        price : files.price,
+                        images: newImageNames,
+                        tags: fields.tags,
+                        used_since: fields.used_since,
+                        location: loggedInUser.location
                     }
-                    else if(fields.start_bid_date == '1h'){
-                        fields.start_bid_date = new Date().getTime() + 3600000;
-                    }
-                    else if(fields.start_bid_date == '1d'){
-                        fields.start_bid_date = new Date().getTime() + 86400000;
-                    }
-                    await Items.create({user_id: loggedInUser._id, name: fields.name, detail: fields.detail, price: fields.price, images: newImageNames, category_id: fields.category, start_bid_date: fields.start_bid_date});
+                    console.log(userObj);
+                    await Items.create(userObj);
                     res.redirect('/profile');
                 })();
               });
@@ -90,39 +97,16 @@ router.post('/profile/additem', checkAuthenticated, (req, res)=>{
 });
 
 
-router.get('/profile/showbid/:id', checkAuthenticated, (req, res)=>{
-    (async ()=>{
-        try {
-            let param = req.params.id;
-            let item = await Items.find({_id: param});
-            
-            
-            if(item.length > 0){
-                let bid = await Bids.find({item_id: item[0]._id});
-                if(bid.length > 0){
-                    let user = await Users.find({_id: bid[0].user_id});
-                    if(user.length > 0){
-                        let showBid = true;
-                        res.render('profile', {user, item, bid, showBid});
-                    }
-                    else {
-                        res.end('page not found');
-                    }
-                }
-                else {
-                    res.end('page not found');
-                }
-                
-            }
-            else {
-                res.end('page not found');
-            }
-            
-        }
-        catch(err){
-            console.log(err);
-        }
-    })();
-});
+router.get("/profile/getUser",checkAuthenticated,async(req, res, next)=>{
+    const user = await req.user;
+    console.log(user);
+    res.status(200).json({fullname:user.fullname, email:user.email, address:user.address, phone:user.phone})
+})
+
+router.get("/profile/myList", checkAuthenticated, async(req, res, next)=>{
+    const logged_user = await req.user;
+    const data = await Item.find({user_id:logged_user._id});
+    res.status(200).json(data);
+})
 
 module.exports = router;

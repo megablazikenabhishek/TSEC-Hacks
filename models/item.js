@@ -1,18 +1,23 @@
 const mongoose = require('./db.js');
 const Schema = mongoose.Schema;
 
+const format = require("date-format");
+
 const ItemSchema = new Schema({
     user_id: String,
-    name: String,
-    category_id: String,
-    date: {type: Number, default: new Date().getTime()},
-    start_bid_date: {type: Number, default: new Date().getTime()},
+    product_name: String,
+    tags: {
+        type: Array,
+        default: []
+    },
+    date: { type: String, default: format.asString("at dd/MM/yyyy on hh:mm", new Date()) },
     images: String,
     detail: String,
     price: Number,
-    bidded: {type: Boolean, default: false},
-    sold: {type: Boolean, default: false}
-    
+    sold: {type: Boolean, default: false},
+    seller_name:String,  
+    location: String, 
+    used_since: Number
 },
 { collection: 'items' });
 
