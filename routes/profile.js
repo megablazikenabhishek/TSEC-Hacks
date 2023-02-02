@@ -96,17 +96,21 @@ router.post('/profile/additem', checkAuthenticated, (req, res)=>{
     })();
 });
 
-
+// Get User
 router.get("/profile/getUser",checkAuthenticated,async(req, res, next)=>{
     const user = await req.user;
     console.log(user);
     res.status(200).json({fullname:user.fullname, email:user.email, address:user.address, phone:user.phone})
 })
-
+// My List
 router.get("/profile/myList", checkAuthenticated, async(req, res, next)=>{
     const logged_user = await req.user;
     const data = await Item.find({user_id:logged_user._id});
     res.status(200).json(data);
+})
+// My Offers
+router.get("/profile/myOffers", checkAuthenticated, async(req, res, next)=>{
+    res.send("hiiii");
 })
 
 module.exports = router;
