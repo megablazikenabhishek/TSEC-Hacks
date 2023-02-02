@@ -53,7 +53,7 @@ include ./header
     else if additem
         .row
             .col-md-8(style='margin: auto')
-                form(method='post' action='/api/placeOffer' enctype="multipart/form-data" style='background-color: white; padding: 10px;')
+                form(method='post' action='/api/additem' enctype="multipart/form-data" style='background-color: white; padding: 10px;')
                     .form-group
                         p Item name
                         input.form-control(type='text' name='name' required)

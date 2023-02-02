@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Product page </title>
+    <link rel="stylesheet" href="product.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+</head>
+
+<body>
+
+
+    <!-- =============================== * navbar * ============================================ -->
+
+    <div class="hedder">
+        <div class="navbar">
+
+
+            <img src="Product_images/p1.jpg" alt="logo">
+
+
+            <div class="contry_select" id="contry">
+                <div class="select">
+                    <p id="text"> Select Your Country </p>
+                    <i class="fa-solid fa-chevron-down" id="moving"></i>
+                </div>
+
+                <ul class="option_box" id="list">
+                    <li class="option" onclick="myfunction('Mumbai')">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>Mumbai</p>
+                    </li>
+                    <li class="option" onclick="myfunction('Delhi')">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>Delhi</p>
+                    </li>
+                    <li class="option" onclick="myfunction('Kolkata')">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>Kolkata</p>
+                    </li>
+                    <li class="option" onclick="myfunction('Hyderabad')">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>Hyderabad</p>
+                    </li>
+                    <li class="option" onclick="myfunction('Chennai')">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>Chennai</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="search_box">
+                <input type="text" class="searchclass" id="searchid" placeholder="Find Cars, mobile phone and More....">
+                <p> <i class="fa-solid fa-magnifying-glass"></i> </p>
+            </div>
+
+            <div class="language">
+                <p id="eng_tag"> English </p>
+
+                <ul class="hin_eng">
+                    <li onclick="languageolx('English')"> English </li>
+                    <li onclick="languageolx('हिन्दी')">हिन्दी</li>
+                </ul>
+            </div>
+
+            <!-- <div class="messeage">
+                <i class="fa-regular fa-comment"></i>
+            </div>
+
+            <div class="messeage">
+                <i class="fa-regular fa-bell"></i>
+            </div> -->
+
+            <div class="your_logo">
+                <div class="girl_img" id="girl_img_id">
+                    <img src="Person_images/pic2.jpg">
+                </div>
+
+                <div class="dropdwon" id="gropdwonid">
+                    <div class="nameandimg">
+                        <img src="Person_images/pic2.jpg">
+                        <p> Lucy </p>
+                    </div>
+
+                    <ul>
+                        <li>
+                            <i class="fa-regular fa-user"></i>
+                            <p>My Account</p>
+                        </li>
+                        <hr>
+                        <li>
+                            <i class="fa-solid fa-list"></i>
+                            <p><a href="my_list.html">Listings</a></p>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-gift"></i>
+                            <p><a href="my_offers.html">My Offers</a></p>
+                        </li>
+                        <hr>
+                        <li>
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <p>Log Out</p>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="selling_page">
+                <button> <i class="fa-solid fa-plus"></i>
+                    <p>SELL</p>
+                </button>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+    <!-- =============================== * ad 1 * ============================================ -->
+
+
+    <div class="ads_img2">
+        <img src="images/ad2.jpg">
+        <i class="fa-regular" id="adicon2"></i>
+    </div>
+
+
+
+    <!-- =============================== * product img * ============================================ -->
+
+
+
+    <div class="product_img">
+
+
+        <div class="image_discription">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide"> <img src="Product_images/p1.jpg"> </div>
+                    <div class="swiper-slide"> <img src="Product_images/p2.jpg"></div>
+                    <div class="swiper-slide"> <img src="Product_images/p3.jpg"></div>
+                    <div class="swiper-slide"> <img src="Product_images/p1.jpg"></div>
+
+                </div>
+
+                <div class="swiper-pagination"></div>
+
+                <div class="swiper-button-prev" id="prev"></div>
+                <div class="swiper-button-next" id="next"></div>
+
+            </div>
+
+            <div class="descriptiopn">
+                <h3> Description </h3>
+                <p>Convert your TV into smart TV using HDMI of your TV. All online platform available downloaded. <br>
+                    Include MI stick, Bluetooth remote, Power adapter.
+                    <br>
+                    <br> Condition new. <br>
+                    <br>
+                    MRP <b>3,500</b>
+                </p>
+            </div>
+        </div>
+
+        <div class="product_details">
+            <div class="box">
+                <div class="price">
+                    <h3> ₹3,500</h3>
+                </div>
+                <span> Mi TV Stick </span>
+                <div class="location">
+                    <p>Ghatkopar West, Mumbai, Maharashtra</p>
+                    <p>Today</p>
+                </div>
+            </div>
+
+            <div class="box" id="box2">
+                <p class="Seller_description"> Seller Description </p>
+                <div class="seller_detail">
+                    <img src="Person_images/pic1.jpg">
+                    <div>
+                        <h2> John </h2>
+                        <p>Member since Nov 2021</p>
+                    </div>
+                </div>
+                <a href="#"> Chat with Seller  </a>
+                <a class="offer" href="#"> Place an Offer <i class="fa fa-gift"></i></a>
+
+            </div>
+
+         <div class="box" id="box3">
+              <h2> Posted in </h2>
+              <p>Bandra East, Mumbai</p>
+              <!-- <img src="images/location.png" > -->
+         </div>
+
+        </div>
+
+    </div>
+
+    <!-- FOrm -->
+
+    <div class="container">
+        <label for="show" class="close-btn fas fa-times" title="close"></label>
+        <div class="text">
+           Product Information
+        </div>
+        <form action="#">
+           <div class="data">
+              <label>product name</label>
+              <input type="text" required>
+           </div>
+           <div class="data">
+            <div class="data">
+                <label>Description</label>
+                <input type="text" required>
+             </div>
+           </div>
+           <div class="data">
+            <div class="data">
+                <label>Location</label>
+                <input type="text" required>
+             </div>
+           </div>
+           <div class="data">
+            <div class="data">
+                <label>Price(In USD($))</label>
+                <input type="number" required>
+             </div>
+           </div>
+           <div class="data">
+          
+           <div class="data">
+               <label for="job_role">Categories</label>
+               <select id="job_role" name="job_role">
+                   <option value="">---Select Categories--</option>
+                   <option value="">BOOKS</option>
+                   <option value="">ELECTRONICS</option>
+               </select>
+        </div>
+           <!-- <div class="data x">
+        </div> -->
+        <div class="form_control">
+            <!-- <label for="CV">Upload your CV</label> -->
+            <!-- <input type="file" id="CV" name="CV" placeholder="Choose file"/> -->
+            <input type='file' name='images' multiple required/>
+        </div>
+           <div class="btn">
+              <div class="inner"></div>
+              <button type="submit">+Add</button>
+           </div>
+        </form>
+     </div>
+
+
+
+
+
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script>
+        //  =============================== * navbar * ============================================
+
+        let contry = document.getElementById('contry');
+        let moving = document.getElementById('moving');
+        let text = document.getElementById('text');
+        let list = document.getElementById('list');
+
+
+        contry.addEventListener('click', () => {
+            list.classList.toggle('hidden');
+            moving.classList.toggle('roted')
+        });
+        function myfunction(omkar) {
+            text.innerHTML = omkar;
+        }
+
+
+        let eng_tag = document.getElementById('eng_tag');
+        let hin_eng = document.querySelector('.hin_eng');
+        let language = document.querySelector('.language');
+
+
+        language.addEventListener('click', () => {
+            hin_eng.classList.toggle('display_div');
+        });
+        function languageolx(anyone) {
+            eng_tag.innerHTML = anyone;
+        }
+
+        let girl_img_id = document.getElementById('girl_img_id');
+        let gropdwonid = document.getElementById('gropdwonid');
+
+        girl_img_id.addEventListener('click', () => {
+            gropdwonid.classList.toggle('block_div')
+        })
+
+        
+        document.querySelector('.offer').addEventListener('click',()=>{
+            // console.log("ok");
+            document.querySelector('.container').style.display='block';
+        })
+
+        document.querySelector('.close-btn').addEventListener('click',()=>{
+            document.querySelector('.container').style.display='none';
+        })
+
+
+        //  =============================== * ad 2 * ============================================
+
+
+
+        let adicon2 = document.getElementById('adicon2');
+        let ads_img2 = document.querySelector('.ads_img2');
+
+        adicon2.addEventListener('click', () => {
+            ads_img2.style = 'display: none';
+        });
+
+
+        //  =============================== * product img* ============================================
+
+
+        const swiper = new Swiper('.swiper', {
+
+            loop: true,
+
+
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+        });
+
+
+
+
+    </script>
+
+</body>
+
+</html>
