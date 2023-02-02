@@ -4,9 +4,205 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Sign in & Sign up Form</title>
+    <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
-    <a href="/login">hii</a>
+    <main>
+      <div class="box">
+        <div class="inner-box">
+          <div class="forms-wrap">
+            <form action="/login" method="post" autocomplete="off" class="sign-in-form">
+              <div class="logo">
+                <!-- <img src="./img/logo.png" alt="easyclass" /> -->
+                <h4>Barter2.0</h4>
+              </div>
+
+              <div class="heading">
+                <h2>Welcome Back</h2>
+                <h6>Not registred yet?</h6>
+                <a href="#" class="toggle">Sign up</a>
+
+                <div class ="google-sign">
+                  <button type="button" class="login-with-google-btn" >
+                    Sign in with Google
+                  </button>
+              </div>
+
+                
+              </div>
+
+
+              <div class="actual-form">
+                <div class="input-wrap">
+                  <input
+                    minlength="4"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                    name="email"
+                    type="email"
+                  />
+                  <label>Email</label>
+                </div>
+
+                <div class="input-wrap password-container">
+                  <input
+                    id = "password"
+                    class="input-field"
+                    autocomplete="off"
+                    onkeyup="showEyeButton()"
+                    required
+                    name="password"
+                    type="password"
+                  />
+                  <label>Password</label>
+                  <i class="fa-solid fa-eye x" id = "show-password"></i>
+                  
+                </div>
+
+                <input type="submit" class="sign-btn" />
+
+                <p class="text">
+                  Forgotten your password or you login datails?
+                  <a href="#">Get help</a> signing in
+                </p>
+              </div>
+            </form>
+
+            <form  method="post" action="/register"autocomplete="off" class="sign-up-form">
+              <div class="logo">
+                <!-- <img src="./img/logo.png" alt="easyclass" /> -->
+                <h4>Barter2.0</h4>
+              </div>
+
+              <div class="heading">
+                <h2>Let's Barter</h2>
+                <h6>Already have an account?</h6>
+                <a href="/" class="toggle">Sign in</a>
+              </div>
+
+              <div class="actual-form">
+                <div class="input-wrap">
+                  <input
+                    type="text"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                    name="fullname"
+                    id="fullname"
+                  />
+                  <label>Name</label>
+                </div>
+
+                <div class="input-wrap">
+                  <input
+                    type="email"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                    name="email"
+                    id="email"
+                  />
+                  <label>Email</label>
+                </div>
+
+                
+                <div class="input-wrap">
+                  <input
+                  type="text"
+                  class="input-field"
+                  autocomplete="off"
+                  required
+                  name="address"
+                  id="address"
+                  />
+                  <label>Location</label>
+                </div>
+                
+                <div class="input-wrap">
+                  <input
+                  type="number"
+                  class="input-field"
+                  autocomplete="off"
+                  required
+                  name="phone"
+                  id="phone"
+                  />
+                  <label>Phone Number</label>
+                </div>
+                
+                <div class="input-wrap">
+                  <input
+                    type="password"
+                    class="input-field"
+                    autocomplete="off"
+                    required
+                    name="password"
+                    id="password-naya"
+                  />
+                  <label>Password</label>
+                </div>
+                <input type="submit" value="Sign Up" class="sign-btn" />
+                <!-- <a href="home.html">ok</a> -->
+
+                <p class="text">
+                  By signing up, I agree to the
+                  <a href="#">Terms of Services</a> and
+                  <a href="#">Privacy Policy</a>
+                </p>
+              </div>
+            </form>
+          </div>
+
+          <div class="carousel">
+            <div class="images-wrapper">
+              <img src="Sign_Images/image1.png" class="image img-1 show" alt="" />
+              <img src="Sign_Images/image2.png" class="image img-2" alt="" />
+              <img src="Sign_Images/image3.png" class="image img-3" alt="" />
+            </div>
+
+            <div class="text-slider">
+              <div class="text-wrap">
+                <div class="text-group">
+                  <h2>Trade without limits - barter away!</h2>
+                  <h2>Direct trade, no middlemen.</h2>
+                  <h2>Building community through bartering.</h2>
+                </div>
+              </div>
+
+              <div class="bullets">
+                <span class="active" data-value="1"></span>
+                <span data-value="2"></span>
+                <span data-value="3"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Javascript file -->
+
+    <script src="login.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.1/axios.min.js" integrity="sha512-NbjaUHU8g0+Y8tMcRtIz0irSU3MjLlEdCvp82MqciVF4R2Ru/eaXHDjNSOvS6EfhRYbmQHuznp/ghbUvcC0NVw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      // document.querySelector(".sign-up-form").addEventListener("submit", (e)=>{
+      //   e.preventDefault();
+      //   // console.log("hiii");
+      //   const obj = {
+      //     fullname:document.getElementById("fullname").value,
+      //     email: document.getElementById("email").value,
+      //     address: document.getElementById("address").value,
+      //     phone: document.getElementById("phone").value,
+      //     password: document.getElementById("password-naya").value
+      //   }
+      //   // console.log(obj);
+      //   axios.post("http://localhost:3000/register", obj)
+      //     .then(res=>console.log(res))
+      //     .catch(err=>console.log(err));
+      // })
+    </script>
   </body>
 </html>

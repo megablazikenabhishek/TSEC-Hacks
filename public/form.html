@@ -1,0 +1,60 @@
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>lg</title>
+      <link rel="stylesheet" href="form.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+   </head>
+   <body>
+      <div class="center">
+         <input type="checkbox" id="show">
+         <label for="show" class="show-btn">View Form</label>
+         <div class="container">
+            <label for="show" class="close-btn fas fa-times" title="close"></label>
+            <div class="text">
+               Product Information
+            </div>
+            <form action="#">
+               <div class="data">
+                  <label>product name</label>
+                  <input type="text" required name="name">
+               </div>
+               <div class="data">
+                <div class="data">
+                    <label>Description</label>
+                    <input type="text" name="detail" required>
+                 </div>
+               </div>
+               <div class="data">
+                <div class="data">
+                    <label>Price(In USD($))</label>
+                    <input type="number" required>
+                 </div>
+               </div>
+               <div class="data">
+              
+               <div class="data">
+                   <label for="job_role">Categories</label>
+                   <select id="job_role" name="job_role">
+                       <option value="">---Select Categories--</option>
+                       <option value="">VEHICLES</option>
+                       <option value="">ELECTRONICS</option>
+                       <option value="">MOBILE AND LAPTOPS</option>
+                   </select>
+            </div>
+               <!-- <div class="data x">
+            </div> -->
+            <div class="form_control">
+                <!-- <label for="CV">Upload your CV</label> -->
+                <!-- <input type="file" id="CV" name="CV" placeholder="Choose file"/> -->
+                <input type='file' name='images' multiple required/>
+            </div>
+               <div class="btn">
+                  <div class="inner"></div>
+                  <button type="submit">+Add</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </body>
+</html>

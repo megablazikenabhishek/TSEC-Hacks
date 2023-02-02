@@ -55,7 +55,7 @@ router.get('/login', checkNotAuthenticated, (req, res)=>{
 
 
 router.post('/login', passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/home.html',
     failureRedirect: '/login',
     failureFlash: true
 })
@@ -78,7 +78,8 @@ router.get('/register', checkNotAuthenticated, (req, res)=>{
     (async ()=>{
         try {
             let register = true;
-            res.render('login', {register});
+            // res.render('login', {register});
+            res.redirect("/login.html")
         }
         catch(err){
             console.log(err);
@@ -87,6 +88,7 @@ router.get('/register', checkNotAuthenticated, (req, res)=>{
 });
 
 router.post('/register', checkNotAuthenticated, (req, res)=>{
+    console.log(req.body);
     (async ()=>{
         try {
             let errors = [];
@@ -100,18 +102,11 @@ router.post('/register', checkNotAuthenticated, (req, res)=>{
                     errors.push('Passwords are not mutch');
             }
             let checkEmail = await Users.find({email: req.body.email}, {_id: 1});
-            if(checkEmail.length > 0){
-                errors.push('Email address already exist');
-            }
-            if(errors.length !== 0){
-                res.render('login', {register, submited, errors});
-            }
-            else {
+            console.log(checkEmail);
                 let success = 'You are successfully signed up'
                 let hashPassword = bcrypt.hashSync(req.body.password, 10);
                 await Users.create({fullname: req.body.fullname, email: req.body.email, address: req.body.address, phone: req.body.phone, password: hashPassword});
-                res.render('login', {register, submited, success});
-            }
+                res.redirect("/home.html");
         }
         catch(err){
             console.log(err);

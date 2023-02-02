@@ -9,6 +9,7 @@ let ctn = 0
 // Get all Item Data
 router.get("/api", async(req, res, next)=>{
     const data = await Item.find({sold:false});
+    console.log(await req.user);
     res.status(200).json(data);
 })
 

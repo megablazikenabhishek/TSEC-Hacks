@@ -43,6 +43,7 @@ router.get('/profile/additem', checkAuthenticated, (req, res)=>{
 router.post('/profile/additem', checkAuthenticated, (req, res)=>{
     (async ()=>{
         try {
+            console.log(req.body);
             let loggedInUser = await req.user;
             const mv = require('mv');
             const formidable = require('formidable');
@@ -75,13 +76,13 @@ router.post('/profile/additem', checkAuthenticated, (req, res)=>{
                     // await Items.create({user_id: loggedInUser._id, name: fields.name, detail: fields.detail, price: fields.price, images: newImageNames, category_id: fields.category, start_bid_date: fields.start_bid_date});
                     let userObj = {
                         user_id : loggedInUser._id,
-                        product_name: fields.name, 
+                        product_name: fields.product_name, 
                         details: fields.details,
-                        price : files.price,
+                        price : Number(fields.price),
                         images: newImageNames,
                         tags: fields.tags,
-                        used_since: fields.used_since,
-                        location: loggedInUser.location
+                        used_since: Number(fields.used_since),
+                        location: loggedInUser.address
                     }
                     console.log(userObj);
                     await Items.create(userObj);

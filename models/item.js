@@ -7,8 +7,7 @@ const ItemSchema = new Schema({
     user_id: String,
     product_name: String,
     tags: {
-        type: Array,
-        default: []
+        type: String,
     },
     date: { type: String, default: format.asString("at dd/MM/yyyy on hh:mm", new Date()) },
     images: String,
