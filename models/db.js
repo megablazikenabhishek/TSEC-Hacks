@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+require("dotenv").config();
 try {
     (async ()=>{
-        await mongoose.connect('mongodb+srv://Abhii:123@tsec-hacks-23.0qambkg.mongodb.net/test1?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
+        await mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
         
     })();
 }catch(err){
