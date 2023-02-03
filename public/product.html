@@ -214,39 +214,34 @@
         <div class="text">
            Product Information
         </div>
-        <form action="#">
+        <form action="/api/placeOffer" method="post" enctype="multipart/form-data">
+           <div class="data">
+              <label>Item_id</label>
+              <input type="text" name="name" id="item_id" disabled>
+           </div>
            <div class="data">
               <label>product name</label>
-              <input type="text" required>
+              <input type="text" name="name" required>
            </div>
            <div class="data">
             <div class="data">
                 <label>Description</label>
-                <input type="text" required>
-             </div>
-           </div>
-           <div class="data">
-            <div class="data">
-                <label>Location</label>
-                <input type="text" required>
+                <input type="text" name="details" required>
              </div>
            </div>
            <div class="data">
             <div class="data">
                 <label>Price(In USD($))</label>
-                <input type="number" required>
+                <input type="number" name="price" required>
              </div>
            </div>
            <div class="data">
-          
-           <div class="data">
-               <label for="job_role">Categories</label>
-               <select id="job_role" name="job_role">
-                   <option value="">---Select Categories--</option>
-                   <option value="">BOOKS</option>
-                   <option value="">ELECTRONICS</option>
-               </select>
-        </div>
+          <div class="data">
+                <div class="data">
+                    <label>Used Since(Months)</label>
+                    <input type="number" name="used_since" required>
+                 </div>
+               </div>
            <!-- <div class="data x">
         </div> -->
         <div class="form_control">

@@ -16,7 +16,11 @@ const ItemSchema = new Schema({
     sold: {type: Boolean, default: false},
     seller_name:String,  
     location: String, 
-    used_since: Number
+    used_since: Number,
+    offers:{
+        type: Array,
+        default: []
+    }
 },
 { collection: 'items' });
 

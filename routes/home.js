@@ -9,7 +9,7 @@ let ctn = 0
 // Get all Item Data
 router.get("/api", async(req, res, next)=>{
     const data = await Item.find({sold:false});
-    console.log(await req.user);
+    // console.log(data);
     res.status(200).json(data);
 })
 
@@ -55,20 +55,22 @@ router.post("/api/placeOffer", (req, res, nex)=>{
                         if(err) throw err;
                     });
                 }
-                
                 (async ()=>{
                     let userObj = {
                         user_id : loggedInUser._id,
                         product_name: fields.name, 
-                        details: fields.details,
-                        price : files.price,
+                        detail: fields.details,
+                        price : Number(fields.price),
                         images: newImageNames,
-                        used_since: fields.used_since,
-                        location: loggedInUser.location
+                        used_since: Number(fields.used_since),
+                        location: loggedInUser.address
                     }
                     console.log(userObj);
                     // const {offer}
-                    res.send("hiii");
+                    const {offers} = await Item.findById(fields.id);
+                    console.log(offers);
+                    await Item.updateOne({_id:fields.id}, {offers})
+                    res.redirect("/hiii");
                 })();
               });
             

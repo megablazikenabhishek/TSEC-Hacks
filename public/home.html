@@ -411,7 +411,8 @@
                 let limit = data.length%3;
               
                 const product = document.querySelector(".product");
-                for(let i=0; i<limit; i++){
+                for(let k=0; k<limit; k++){
+                    let i = 3*k;
                     const row = document.createElement("div");
                     row.classList.add("First_row");
                     row.innerHTML = `
@@ -459,6 +460,7 @@
                      localStorage.setItem("item_id", id);
                      location.href = "/product.html"
                     });
+                    console.log(i);
                 }
             })
             .catch(err=>console.log(err))  
